@@ -6,6 +6,8 @@ use App\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UserEditFormRequest;
 
 class UsersController extends Controller
 {
@@ -21,5 +23,21 @@ class UsersController extends Controller
       $roles = Role::all();
       $selectedRoles = $user->roles()->pluck('name')->toArray();
       return view('backend.users.edit', compact('user', 'roles', 'selectedRoles'));
+    }
+
+    public function update($id, UserEditFormRequest $request)
+    {
+      $user = User::whereId($id)->firstOrFail();
+      $user->name = $request->get('name');
+      $user->email = $request->get('email');
+      $password = $request->get('password');
+      if($password != "") {
+        $user->password = Hash::make($password);
+      }
+      $user->save();
+
+      $user->syncRoles($request->get('role'));
+
+      return redirect(action('Admin\UsersController@edit', $user->id))->with('status', 'The user has been updated!');
     }
 }
