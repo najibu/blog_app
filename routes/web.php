@@ -48,3 +48,4 @@ Route::post('/comment', 'CommentsController@newComment');
 //Auth 
 Route::get('users/register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('users/register', 'Auth\RegisterController@register');
+Route::get('users/logout', 'Auth\LoginController@logout');
