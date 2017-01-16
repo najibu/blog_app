@@ -4,7 +4,7 @@
 @section('content')
   <div class="container col-md-6 col-md-offset-3">
     <div class="well well bs-component">
-      <form method="post" action='users/register' class="form-horizontal">
+      <form method="post" class="form-horizontal">
         {!! csrf_field() !!}
         @foreach ($errors->all() as $error)
           <p class="alert alert-danger">{{ $error }}</p>
