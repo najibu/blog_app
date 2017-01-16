@@ -10,6 +10,12 @@ use Spatie\Permission\Models\Permission;
 
 class RolesController extends Controller
 {
+    public function index()
+    {
+      $roles = Role::all();
+      return view('backend.roles.index', compact('roles'));
+    }
+
     public function create()
     {
       return view('backend.roles.create');
