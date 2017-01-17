@@ -91,7 +91,15 @@ class PostsController extends Controller
      */
     public function update(PostEditFormRequest $request, $id)
     {
-        //
+        $post = Post::whereId($id)->firstOrFail();
+        $post->title = $request->get('title');
+        $post->content = $request->get('content');
+        $post->slug = Str::slug($request->get('title'), '-');
+
+        $post->save();
+        $post->categories()->sync($request->get('categories'));
+
+        return redirect(action('Admin\PostsController@edit', $post->id))->with('status', 'The post has been updated!');
     }
 
     /**
