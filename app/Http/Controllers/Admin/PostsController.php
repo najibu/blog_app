@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostFormRequest;
+use App\Http\Requests\PostEditFormRequest;
 
 class PostsController extends Controller
 {
@@ -88,7 +89,7 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostEditFormRequest $request, $id)
     {
         //
     }
