@@ -33,6 +33,20 @@
           </div>
 
           <div class="form-group">
+            <label for="categories" class="col-lg-2 control-label">Categories</label>
+
+            <div class="col-lg-10">
+              <select name="categories[]" id="category" class="form-control" multiple>
+                @foreach($categories as $category)
+                  <option value="{!! $category->id !!}">
+                    {!! $category->name !!}
+                  </option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
               <button type="reset" class="btn btn-default">Cancel</button>
               <button type="submit" class="btn btn-primary">Submit</button>

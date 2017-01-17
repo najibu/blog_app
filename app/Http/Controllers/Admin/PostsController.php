@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
+use App\Post;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -24,7 +28,8 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('backend.posts.create');
+        $categories = Category::all();
+        return view('backend.posts.create', compact('categories'));
     }
 
     /**
