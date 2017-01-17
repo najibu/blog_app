@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -33,9 +34,15 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryFormRequest $request)
     {
-        //
+        $category = new Category(array(
+            'name' => $request->get('name'),
+        ));
+
+        $category->save();
+
+        return redirect('/admin/categories/create')->with('status', 'A new category has been created!');
     }
 
     /**
