@@ -32,7 +32,7 @@
           <tr>
             <td>{!! $post->id !!}</td>
             <td>
-              <a href="#">{!! $post->title !!} </a>
+              <a href="{!! action('Admin\PostsController@edit', $post->id) !!}">{!! $post->title !!} </a>
             </td>
             <td>{!! $post->slug !!}</td>
             <td>{!! $post->created_at !!}</td>

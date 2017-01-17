@@ -75,7 +75,10 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::whereId($id)->firstOrFail();
+        $categories = Category::all();
+        $selectedCategories = $post->categories->pluck('id')->toArray();;
+        return view('backend.posts.edit', compact('post', 'categories', 'selectedCategories'));
     }
 
     /**
