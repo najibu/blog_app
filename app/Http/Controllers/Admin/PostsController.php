@@ -50,8 +50,8 @@ class PostsController extends Controller
         ));
 
         $post->save();
-        $post->categories()->sync($request->get('categories
-            '));
+        $post->categories()->sync($request->get('categories'));
+
         return redirect('/admin/posts/create')->with('status', 'The post has been created!');
     }
 
