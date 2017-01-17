@@ -10,9 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', 'PagesController@home');
-Route::get('home', 'PagesController@home');
 Route::get('about', 'PagesController@about');
 
 // Tickets routes
@@ -60,4 +58,5 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
   Route::post('roles/create', 'RolesController@store');
   Route::get('users/{id?}/edit', 'UsersController@edit');
   Route::post('users/{id?}/edit', 'UsersController@update');
+  Route::get('/', 'PagesController@home');
 });
