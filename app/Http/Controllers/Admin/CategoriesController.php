@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryFormRequest;
 
 class CategoriesController extends Controller
 {
@@ -15,7 +16,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('backend.categories.index', compact('categories'));
     }
 
     /**
