@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Category;
 use App\Post;
+use App\Category;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\PostFormRequest;
 
 class PostsController extends Controller
 {
@@ -38,9 +39,20 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostFormRequest $request)
     {
-        //
+        $user_id = Auth::user()->id;
+        $post = new Post(array(
+            'title' => $request->get('title'),
+            'content' => $request->get('content'),
+            'slug' => Str::slug($request->get('title'), '-'),
+            'user_id' => $user_id
+        ));
+
+        $post->save();
+        $post->categories()->sync($request->get('categories
+            '));
+        return redirect('/admin/posts/create')->with('status', 'The post has been created!');
     }
 
     /**
