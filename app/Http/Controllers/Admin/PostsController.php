@@ -99,7 +99,7 @@ class PostsController extends Controller
         $post->save();
         $post->categories()->sync($request->get('categories'));
 
-        return redirect(action('Admin\PostsController@edit', $post->id))->with('status', 'The post has been updated!');
+        return redirect(action('Admin\PostsController@index'))->with('status', 'The post has been updated!');
     }
 
     /**

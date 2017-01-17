@@ -50,6 +50,9 @@ Route::get('users/logout', 'Auth\LoginController@logout');
 Route::get('users/login', 'Auth\LoginController@showLoginForm');
 Route::post('users/login', 'Auth\LoginController@login');
 
+//Blog
+Route::get('/blog', 'BlogController@index');
+
 //Admin 
 Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'manager'), function(){
   Route::get('users', ['as' => 'admin.user.index', 'uses' => 'UsersController@index']);
