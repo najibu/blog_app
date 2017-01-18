@@ -17,6 +17,6 @@ class Post extends Model
 
     public function comments()
     {
-      return $this->morphMany('Comment', 'post');
+      return $this->morphMany('App\Comment', 'post');
     }
 }

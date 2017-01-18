@@ -43,6 +43,8 @@
 
         <input type="hidden" name="post_id" value="{!! $ticket->id !!}">
 
+        <input type="hidden" name="post_type" value="App/Ticket">
+
         <fieldset>
           <legend>Reply</legend>
           <div class="form-group">
