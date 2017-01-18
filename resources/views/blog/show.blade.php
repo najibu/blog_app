@@ -38,7 +38,7 @@
         <input type="hidden" name="post_type" value="App\Post">
 
         <fieldset>
-          <legend>Comment</legend>
+          <legend>Reply</legend>
           <div class="form-group">
             <div class="col-lg-12">
               <textarea class="form-control" rows="3" id="content" name="content"></textarea>
