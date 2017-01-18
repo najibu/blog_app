@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Comment;
 use App\Category;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,5 +13,10 @@ class Post extends Model
     public function categories()
     {
       return $this->belongsToMany('App\Category')->withTimestamps();
+    }
+
+    public function comments()
+    {
+      return $this->morphMany('Comment', 'post');
     }
 }

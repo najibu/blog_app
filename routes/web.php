@@ -52,6 +52,7 @@ Route::post('users/login', 'Auth\LoginController@login');
 
 //Blog
 Route::get('/blog', 'BlogController@index');
+Route::get('/blog/{slug?}', 'BlogController@show');
 
 //Admin 
 Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'manager'), function(){
