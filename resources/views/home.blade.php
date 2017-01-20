@@ -10,7 +10,7 @@
                 </h1>
 
                 <h3 class="text-center margin-top-100 editContent">
-                    Building Practical Applications
+                   {!! trans('main.subtitle') !!}
                 </h3>
 
                 <div class="text-center">
